@@ -24,7 +24,6 @@ class _ProductPageState extends State<ProductPage>{
         color: Colors.white,
         elevation: 2,
         shape: RoundedRectangleBorder(
-           // side: BorderSide(color: appThemeColor.shade200, width: 0.5),
             borderRadius: BorderRadius.circular(5)),
         child: Container(
           width: screenSize.width,
