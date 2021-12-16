@@ -12,7 +12,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage>{
-  String count = "0";
+  String itemSelectedCount = "0";
   Size screenSize;
   ColorUtils colorUtils = ColorUtils();
 
@@ -33,9 +33,9 @@ class _ProductPageState extends State<ProductPage>{
                Container(
                  width: screenSize.width * 0.4,
                    margin: EdgeInsets.only(left: 8),
-                   child: Expanded(child: Text(product.name, style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500, fontSize: 16),))
+                   child: Text(product.name, style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500, fontSize: 16),)
                ),
-               Expanded(child: Text(product.price,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500, fontSize: 16))),
+               Text(product.price,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w500, fontSize: 16)),
                Checkbox(
                  checkColor: Colors.black,
                   activeColor: Colors.grey,
@@ -43,14 +43,14 @@ class _ProductPageState extends State<ProductPage>{
                   onChanged: (bool value) {
                     setState(() {
                       product.isCheck = value;
-                      count = productList.where((p) => p.isCheck == true).toList().length.toString();
+                      itemSelectedCount = productList.where((p) => p.isCheck == true).toList().length.toString();
                     });
                   }),
               FlatButton(onPressed: (){
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context){
-                      return ProductDetailPage(product: product,itemCount: count,);
+                      return ProductDetailPage(product: product,itemCount: itemSelectedCount,);
                     },
                   ),
                 );
@@ -77,7 +77,7 @@ class _ProductPageState extends State<ProductPage>{
         actions: [
           Padding(
               padding: EdgeInsets.only(right: 20.0),
-              child: Text(count, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
+              child: Text(itemSelectedCount, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),)
 
           )
 
